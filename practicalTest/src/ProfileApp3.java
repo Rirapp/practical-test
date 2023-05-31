@@ -3,9 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 // paling oke
 class Person3 {
@@ -35,7 +33,9 @@ public class ProfileApp3 {
         List<Person3> persons = new ArrayList<>();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
 
         try {
             while (true) {
@@ -73,7 +73,7 @@ public class ProfileApp3 {
         try {
             FileWriter writer = new FileWriter(filename);
             for (Person3 person : persons) {
-                String line = person.nik + "," + person.name + "," + person.tanggalLahir.toString();
+                String line = person.nik + "," + person.name + "," + person.tanggalLahir.toString(); // belum dicoba make instant
                 writer.write(line + "\n");
             }
             writer.close();
